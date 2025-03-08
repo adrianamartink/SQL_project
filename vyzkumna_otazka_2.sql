@@ -58,7 +58,7 @@ GROUP BY
 -- Joining prices and payroll together and calculating number of units we can buy for average payroll
 SELECT 
   payroll_year, 
-  name, 
+  name AS product_name, 
   avg_price, 
   avg_payroll, 
   ROUND(
