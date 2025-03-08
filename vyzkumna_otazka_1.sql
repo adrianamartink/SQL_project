@@ -26,7 +26,7 @@ ORDER BY name, payroll_year;
 
 -- Final select that will provide counts how many years the payroll increased or decreased for given industry branch 
 SELECT 
-    name, 
+    name AS payroll_industry, 
     COUNT(CASE WHEN trend = 'Decreasing' THEN 1 END) AS decreasing_count,
     COUNT(CASE WHEN trend = 'Increasing' THEN 1 END) AS increasing_count
 FROM 
