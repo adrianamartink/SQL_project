@@ -20,10 +20,7 @@ CREATE
 OR REPLACE VIEW v_avg_price_of_milk_bread AS 
 SELECT 
   name, 
-  ROUND(
-    avg(value), 
-    2
-  ) AS avg_price, 
+  ROUND(avg(value), 2) AS avg_price, 
   year_of_price 
 FROM 
   v_milk_bread as vmb 
@@ -36,10 +33,7 @@ CREATE
 OR REPLACE VIEW v_avg_payroll AS 
 SELECT 
   payroll_year, 
-  ROUND(
-    avg(value), 
-    2
-  ) AS avg_payroll 
+  ROUND(avg(value), 2) AS avg_payroll 
 FROM 
   (
     SELECT 
@@ -61,10 +55,7 @@ SELECT
   name AS product_name, 
   avg_price, 
   avg_payroll, 
-  ROUND(
-    (avg_payroll / avg_price), 
-    2
-  ) AS units_of_products_for_avg_payroll 
+  ROUND((avg_payroll / avg_price), 2) AS units_of_products_for_avg_payroll 
 FROM 
   v_avg_payroll as vap 
   JOIN v_avg_price_of_milk_bread as vapomb ON vapomb.year_of_price = vap.payroll_year 
