@@ -56,15 +56,15 @@ FROM v_avg_price_all_products_per_year as vapappy;
 SELECT 
     vpcp.payroll_year,
     vpcp.payroll_percentage_change,
-    vpcapag.percentage_change_prices,
+    v_perchange_all.percentage_change_prices,
     CASE 
-        WHEN vpcapag.percentage_change_prices - vpcp.payroll_percentage_change >= 10 THEN 'high increase'
-        WHEN vpcapag.percentage_change_prices - vpcp.payroll_percentage_change > 0 THEN 'increase'
+        WHEN v_perchange_all.percentage_change_prices - vpcp.payroll_percentage_change >= 10 THEN 'high increase'
+        WHEN v_perchange_all.percentage_change_prices - vpcp.payroll_percentage_change > 0 THEN 'increase'
         ELSE 'decrease or no change'
     END AS rate_relative_goods_prices
 FROM 
     v_percentage_change_payroll AS vpcp
 JOIN 
-    v_percentage_change_avg_prices_all_goods AS vpcapag 
+    v_percentage_change_avg_prices_all_goods AS v_perchange_all 
 ON 
-    vpcapag.year_sth = vpcp.payroll_year;
+    v_perchange_all.year_sth = vpcp.payroll_year;
